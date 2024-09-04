@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 const Navbar = () => {
   return (
     <div className="page-wrapper">
@@ -11,19 +12,15 @@ const Navbar = () => {
               <nav className="main-nav">
                 <ul className="menu sf-arrows">
                   <li className="megamenu-container active">
-                    <a href="index.html" className="sf-with-ul">
-                      &nbsp;Home
-                    </a>
+                    <Link to="/">
+                      <a className="sf-with-ul">&nbsp;Home</a>
+                    </Link>
                   </li>
                   <li>
-                    <a href="category.html" className="sf-with-ul">
-                      &nbsp;Shop
-                    </a>
+                    <a className="sf-with-ul">&nbsp;Shop</a>
                   </li>
                   <li>
-                    <a href="product.html" className="sf-with-ul">
-                      &nbsp;Product
-                    </a>
+                    <a className="sf-with-ul">&nbsp;Product</a>
                   </li>
                 </ul>
               </nav>

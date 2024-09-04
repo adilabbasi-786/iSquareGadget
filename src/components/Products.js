@@ -1,36 +1,50 @@
 import React, { useEffect, useState } from "react";
-import product1 from "../assests/demo-4/products/product-1.jpg";
-import product2 from "../assests/demo-4/products/product-2.jpg";
-import product3 from "../assests/demo-4/products/product-3.jpg";
 import { Link, useNavigate } from "react-router-dom";
 import ProductsCategory from "./ProductsCategory";
 
 const Products = () => {
   const navigate = useNavigate();
-  const [AllProducts, setAllProducts] = useState([]);
+  const [allProducts, setAllProducts] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState("All");
+
   useEffect(() => {
-    const fetProducts = async () => {
+    const fetchProducts = async () => {
       try {
         const response = await fetch(
           "https://strapi-182529-0.cloudclusters.net/api/Products?populate=*"
         );
         const data = await response.json();
         setAllProducts(data.data);
+        setFilteredProducts(data.data);
       } catch (error) {
         console.error("Error fetching products:", error);
       }
     };
-    fetProducts();
+    fetchProducts();
   }, []);
+
+  useEffect(() => {
+    if (selectedCategory === "All") {
+      setFilteredProducts(allProducts);
+    } else {
+      const filtered = allProducts.filter(
+        (product) =>
+          product.attributes.category.data.attributes.Name === selectedCategory
+      );
+      setFilteredProducts(filtered);
+    }
+  }, [selectedCategory, allProducts]);
+
   return (
     <div className="container new-arrivals">
       <div className="heading heading-flex mb-3">
         <div className="heading-left">
           <h2 className="title">All Products</h2>
         </div>
-
-        <ProductsCategory />
+        <ProductsCategory onCategorySelect={setSelectedCategory} />
       </div>
+
       <div className="tab-content tab-content-carousel just-action-icons-sm">
         <div
           className="tab-pane p-0 fade show active"
@@ -45,7 +59,7 @@ const Products = () => {
               gap: "20px",
             }}
           >
-            {AllProducts.map((product) => (
+            {filteredProducts.map((product) => (
               <div
                 className="product product-2"
                 style={{
@@ -56,11 +70,8 @@ const Products = () => {
                 onClick={() => navigate(`/productDetails/${product.id}`)}
               >
                 <figure className="product-media">
-                  <span className="product-label label-circle label-top">
-                    Top
-                  </span>
                   <img
-                    src={product1}
+                    src={`https://strapi-182529-0.cloudclusters.net${product.attributes.Image.data[0].attributes.url}`}
                     alt="Product image"
                     className="product-image"
                   />
@@ -90,13 +101,8 @@ const Products = () => {
                     </a>
                   </div>
                 </figure>
-
                 <div className="product-body">
                   <div className="product-cat">
-                    {console.log(
-                      "priduct",
-                      product.attributes.category.data.attributes.Name
-                    )}
                     <a href="#">
                       {product.attributes.category.data.attributes.Name}
                     </a>
@@ -114,7 +120,6 @@ const Products = () => {
                         style={{ width: "100%" }}
                       ></div>
                     </div>
-                    <span className="ratings-text">( 4 Reviews )</span>
                   </div>
                 </div>
               </div>
@@ -122,18 +127,6 @@ const Products = () => {
           </div>
         </div>
       </div>
-      <style>
-        {`
-          @media (max-width: 768px) {
-            .container.new-arrivals {
-              display: block;
-            }
-            .container.new-arrivals .product-2 {
-              flex: 1 1 100%;
-            }
-          }
-        `}
-      </style>
     </div>
   );
 };
