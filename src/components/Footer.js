@@ -7,35 +7,36 @@ import { ShopContext } from "../ShopContext";
 const Footer = () => {
   const { PhoneNumber, Logo, Address } = useContext(ShopContext);
   return (
-    <footer class="footer">
+    <footer className="footer bg-dark " style={{ color: "white" }}>
       <div
-        class="cta bg-image bg-dark pt-4 pb-5 mb-0"
+        className="cta bg-image bg-dark pt-4 pb-5 mb-0"
         // style={{background-image: "url(assets/images/demos/demo-4/bg-5.jpg)"}}
       >
-        <div class="container">
-          <div class="row justify-content-center">
-            <div class="col-sm-10 col-md-8 col-lg-6">
-              <div class="cta-heading text-center">
-                <h3 class="cta-title text-white">Get The Latest Deals</h3>
-                <p class="cta-desc text-white">
-                  and receive <span class="font-weight-normal">$20 coupon</span>{" "}
-                  for first shopping
+        <div className="container">
+          <div className="row justify-content-center">
+            <div className="col-sm-10 col-md-8 col-lg-6">
+              <div className="cta-heading text-center">
+                <h3 className="cta-title text-white">Get The Latest Deals</h3>
+                <p className="cta-desc text-white">
+                  and receive{" "}
+                  <span className="font-weight-normal">$20 coupon</span> for
+                  first shopping
                 </p>
               </div>
 
               <form action="#">
-                <div class="input-group input-group-round">
+                <div className="input-group input-group-round">
                   <input
                     type="email"
-                    class="form-control form-control-white"
+                    className="form-control form-control-white"
                     placeholder="Enter your Email Address"
                     aria-label="Email Adress"
                     required
                   />
-                  <div class="input-group-append">
-                    <button class="btn btn-primary" type="submit">
+                  <div className="input-group-append">
+                    <button className="btn btn-primary" type="submit">
                       <span>Subscribe</span>
-                      <i class="icon-long-arrow-right"></i>
+                      <i className="icon-long-arrow-right"></i>
                     </button>
                   </div>
                 </div>
@@ -44,22 +45,29 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div class="footer-middle">
-        <div class="container">
-          <div class="row">
-            <div class="col-sm-6 col-lg-3">
-              <div class="widget widget-about">
+      <div className="footer-middle">
+        <div className="container">
+          <div className="row">
+            <div className="col-sm-6 col-lg-3">
+              <div className="widget widget-about">
                 <img
                   src={`https://strapi-182529-0.cloudclusters.net${Logo?.data?.attributes?.url}`}
-                  class="footer-logo"
+                  className="footer-logo"
+                  style={{
+                    width: "150px",
+                    height: "84px",
+                  }}
                   alt="Footer Logo"
                   width="105"
                   height="25"
                 />
-                <p>Address: {Address}</p>
+                <p style={{ color: "white" }}>
+                  <span style={{ fontWeight: "bold" }}>Address: </span>
+                  {Address}
+                </p>
 
-                <div class="widget-call">
-                  <i class="icon-phone"></i>
+                <div className="widget-call">
+                  <i className="icon-phone"></i>
                   Got Question? Call us 24/7
                   <a href="tel:#">
                     {PhoneNumber && PhoneNumber[0]?.PhoneNumber}
@@ -68,11 +76,13 @@ const Footer = () => {
               </div>
             </div>
 
-            <div class="col-sm-6 col-lg-3">
-              <div class="widget">
-                <h4 class="widget-title">Useful Links</h4>
+            <div className="col-sm-6 col-lg-3">
+              <div className="widget">
+                <h4 className="widget-title" style={{ color: "white" }}>
+                  Useful Links
+                </h4>
 
-                <ul class="widget-list">
+                <ul className="widget-list">
                   <li>
                     <a href="about.html">About I Gadget</a>
                   </li>
@@ -92,11 +102,13 @@ const Footer = () => {
               </div>
             </div>
 
-            <div class="col-sm-6 col-lg-3">
-              <div class="widget">
-                <h4 class="widget-title">Customer Service</h4>
+            <div className="col-sm-6 col-lg-3">
+              <div className="widget">
+                <h4 className="widget-title" style={{ color: "white" }}>
+                  Customer Service
+                </h4>
 
-                <ul class="widget-list">
+                <ul className="widget-list">
                   <li>
                     <a href="#">Payment Methods</a>
                   </li>
@@ -119,11 +131,13 @@ const Footer = () => {
               </div>
             </div>
 
-            <div class="col-sm-6 col-lg-3">
-              <div class="widget">
-                <h4 class="widget-title">My Account</h4>
+            <div className="col-sm-6 col-lg-3">
+              <div className="widget">
+                <h4 className="widget-title" style={{ color: "white" }}>
+                  My Account
+                </h4>
 
-                <ul class="widget-list">
+                <ul className="widget-list">
                   <li>
                     <a href="#">Sign In</a>
                   </li>
@@ -146,12 +160,12 @@ const Footer = () => {
         </div>
       </div>
 
-      <div class="footer-bottom">
-        <div class="container">
-          <p class="footer-copyright">
+      <div className="footer-bottom">
+        <div className="container">
+          <p className="footer-copyright">
             Copyright © 2024 I2 Square gadgets. All Rights Reserved.
           </p>
-          <figure class="footer-payments">
+          <figure className="footer-payments">
             <p>
               Design & Develop by{" "}
               <Link

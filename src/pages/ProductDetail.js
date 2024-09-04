@@ -3,7 +3,8 @@ import Header from "../components/Header";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { useParams } from "react-router-dom";
-import ReactImageMagnify from "react-image-magnify";
+import Zoom from "react-medium-image-zoom";
+import "react-medium-image-zoom/dist/styles.css";
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -51,30 +52,13 @@ const ProductDetail = () => {
                       <div className="product-gallery product-gallery-vertical">
                         <div className="row">
                           <figure className="product-main-image">
-                            <ReactImageMagnify
-                              {...{
-                                smallImage: {
-                                  alt: "product image",
-                                  isFluidWidth: true,
-                                  src: selectedImage,
-                                },
-                                largeImage: {
-                                  src: selectedImage,
-                                  width: 1200,
-                                  height: 1800,
-                                },
-                                enlargedImageContainerDimensions: {
-                                  width: "100%",
-                                  height: "100%",
-                                },
-                                isHintEnabled: true,
-                                shouldUsePositiveSpaceLens: true,
-                                enlargedImagePosition: "over",
-                                lensStyle: {
-                                  backgroundColor: "rgba(0,0,0,.6)",
-                                },
-                              }}
-                            />
+                            <Zoom>
+                              <img
+                                alt="product image"
+                                src={selectedImage}
+                                style={{ width: "100%" }}
+                              />
+                            </Zoom>
 
                             <a
                               href="#"

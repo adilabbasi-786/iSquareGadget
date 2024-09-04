@@ -1,7 +1,6 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 import axios from "axios";
-import { ShopContext } from "../ShopContext";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
@@ -32,12 +31,29 @@ const Hero = () => {
   const settings = {
     dots: true,
     infinite: true,
-    speed: 1000,
+    speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 3000,
+    autoplaySpeed: 5000,
     arrows: true,
+    responsive: [
+      {
+        breakpoint: 768, // Mobile
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          arrows: false,
+        },
+      },
+      {
+        breakpoint: 1024, // Tablet
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
 
   return (
@@ -55,7 +71,7 @@ const Hero = () => {
                       backgroundImage: `url(${backgroundImageUrl})`,
                       backgroundSize: "cover",
                       backgroundPosition: "center",
-                      // height: "500px",
+
                       position: "relative",
                     }}
                   >
@@ -64,18 +80,28 @@ const Hero = () => {
                       style={{
                         position: "absolute",
                         top: "30%",
-                        left: "10%",
+                        left: "60%",
+                        right: "10%",
+                        textAlign: "left",
                       }}
                     >
-                      <div
-                        className="row justify-content-end"
-                        style={{ marginLeft: "300px" }}
-                      >
-                        <div className="col-auto col-sm-7 col-md-6 col-lg-5">
-                          <h3 className="intro-subtitle text-primary">
+                      <div className="row">
+                        <div className="col-12">
+                          <h3
+                            className="intro-subtitle text-primary"
+                            style={{ fontSize: "2rem" }} // Responsive font size
+                          >
                             New Arrival
                           </h3>
-                          <h1 className="intro-title">{banner.text}</h1>
+                          <h1
+                            className="intro-title"
+                            style={{
+                              fontSize: "3rem", // Responsive font size
+                              lineHeight: "1.2",
+                            }}
+                          >
+                            {banner.text}
+                          </h1>
                         </div>
                       </div>
                     </div>
