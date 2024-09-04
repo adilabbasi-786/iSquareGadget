@@ -3,11 +3,13 @@ import Header from "../components/Header";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { useParams } from "react-router-dom";
+import ReactImageMagnify from "react-image-magnify";
 
 const ProductDetail = () => {
   const { id } = useParams();
   const [data, setData] = useState([]);
-  const [selectedImage, setSelectedImage] = useState(""); // State to track selected image
+  const [selectedImage, setSelectedImage] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     const getData = async () => {
@@ -29,27 +31,16 @@ const ProductDetail = () => {
   const handleImageClick = (url) => {
     setSelectedImage(`https://strapi-182529-0.cloudclusters.net${url}`);
   };
-  const handleFullScreen = () => {
-    const imgElement = document.getElementById("product-zoom");
-    if (imgElement.requestFullscreen) {
-      imgElement.requestFullscreen();
-    } else if (imgElement.mozRequestFullScreen) {
-      // For Firefox
-      imgElement.mozRequestFullScreen();
-    } else if (imgElement.webkitRequestFullscreen) {
-      // For Chrome, Safari, and Opera
-      imgElement.webkitRequestFullscreen();
-    } else if (imgElement.msRequestFullscreen) {
-      // For IE/Edge
-      imgElement.msRequestFullscreen();
-    }
+
+  const toggleModal = () => {
+    setIsModalOpen(!isModalOpen);
   };
 
   return (
     <>
       <Header />
       <Navbar />
-      <main className="main">
+      <main className={`main ${isModalOpen ? "blur-background" : ""}`}>
         <nav aria-label="breadcrumb" className="breadcrumb-nav border-0 mb-0">
           <div className="container d-flex align-items-center">
             <div className="page-content">
@@ -60,18 +51,36 @@ const ProductDetail = () => {
                       <div className="product-gallery product-gallery-vertical">
                         <div className="row">
                           <figure className="product-main-image">
-                            <img
-                              id="product-zoom"
-                              src={selectedImage} // Use selectedImage as the main image
-                              data-zoom-image={selectedImage}
-                              alt="product image"
+                            <ReactImageMagnify
+                              {...{
+                                smallImage: {
+                                  alt: "product image",
+                                  isFluidWidth: true,
+                                  src: selectedImage,
+                                },
+                                largeImage: {
+                                  src: selectedImage,
+                                  width: 1200,
+                                  height: 1800,
+                                },
+                                enlargedImageContainerDimensions: {
+                                  width: "100%",
+                                  height: "100%",
+                                },
+                                isHintEnabled: true,
+                                shouldUsePositiveSpaceLens: true,
+                                enlargedImagePosition: "over",
+                                lensStyle: {
+                                  backgroundColor: "rgba(0,0,0,.6)",
+                                },
+                              }}
                             />
 
                             <a
                               href="#"
                               id="btn-product-gallery"
                               className="btn-product-gallery"
-                              onClick={handleFullScreen}
+                              onClick={toggleModal}
                             >
                               <i className="icon-arrows"></i>
                             </a>
@@ -211,6 +220,17 @@ const ProductDetail = () => {
           </div>
         </nav>
       </main>
+      {isModalOpen && (
+        <div className="modal-overlay" onClick={toggleModal}>
+          <div className="modal-content">
+            <img
+              src={selectedImage}
+              alt="Enlarged product"
+              className="enlarged-image"
+            />
+          </div>
+        </div>
+      )}
       <Footer />
     </>
   );

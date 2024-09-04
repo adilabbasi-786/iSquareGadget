@@ -1,18 +1,24 @@
-import React from "react";
+import React, { useContext } from "react";
 import slider1 from "../assests/demo-4/slider/slide-1.png";
 import slider2 from "../assests/demo-4/slider/slide-2.png";
+import { ShopContext } from "../ShopContext";
 
 const Hero = () => {
+  const { banner } = useContext(ShopContext);
   return (
     <div class="page-wrapper">
       <main class="main">
         <div className="intro-slider-container mb-5">
           <div
             className="intro-slide"
-            style={{
-              backgroundImage: `url(${slider2})`,
-            }}
+            // style={{
+            //   backgroundImage: `url(${slider2})`,
+            // }}
           >
+            <img
+              src={`https://strapi-182529-0.cloudclusters.net${banner?.data?.attributes?.url}`}
+              alt=""
+            />
             <div className="container intro-content">
               <div className="row justify-content-end">
                 <div className="col-auto col-sm-7 col-md-6 col-lg-5">

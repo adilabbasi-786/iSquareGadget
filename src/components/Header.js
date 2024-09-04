@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faPhone,
@@ -13,8 +13,10 @@ import {
 import logo from "../assests/logo (1).png";
 import product1 from "../assests/demo-4/products/product-5.jpg";
 import product2 from "../assests/demo-4/products/product-6.jpg";
+import { ShopContext } from "../ShopContext";
 
 const Header = () => {
+  const { PhoneNumber, Logo } = useContext(ShopContext);
   return (
     <div className="page-wrapper">
       <header className="header header-intro-clearance header-4">
@@ -22,8 +24,8 @@ const Header = () => {
           <div className="container">
             <div className="header-left">
               <a href="tel:#">
-                <FontAwesomeIcon icon={faPhone} />
-                Call: +0123 456 789
+                <FontAwesomeIcon icon={faPhone} />{" "}
+                {PhoneNumber && PhoneNumber[0]?.PhoneNumber}
               </a>
             </div>
 
@@ -54,7 +56,12 @@ const Header = () => {
               </button>
 
               <a href="/" className="logo">
-                <img src={logo} alt="Molla Logo" width="105" height="25" />
+                <img
+                  src={`https://strapi-182529-0.cloudclusters.net${Logo?.data?.attributes?.url}`}
+                  alt="Molla Logo"
+                  width="105"
+                  height="25"
+                />
               </a>
             </div>
 

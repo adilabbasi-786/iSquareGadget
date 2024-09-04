@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import logo from "../assests/logo (1).png";
 import payment from "../assests/payments.png";
+import { Link } from "react-router-dom";
+import { ShopContext } from "../ShopContext";
+
 const Footer = () => {
+  const { PhoneNumber, Logo, Address } = useContext(ShopContext);
   return (
     <footer class="footer">
       <div
@@ -46,21 +50,20 @@ const Footer = () => {
             <div class="col-sm-6 col-lg-3">
               <div class="widget widget-about">
                 <img
-                  src={logo}
+                  src={`https://strapi-182529-0.cloudclusters.net${Logo?.data?.attributes?.url}`}
                   class="footer-logo"
                   alt="Footer Logo"
                   width="105"
                   height="25"
                 />
-                <p>
-                  Praesent dapibus, neque id cursus ucibus, tortor neque egestas
-                  augue, eu vulputate magna eros eu erat.{" "}
-                </p>
+                <p>Address: {Address}</p>
 
                 <div class="widget-call">
                   <i class="icon-phone"></i>
                   Got Question? Call us 24/7
-                  <a href="tel:#">+0123 456 789</a>
+                  <a href="tel:#">
+                    {PhoneNumber && PhoneNumber[0]?.PhoneNumber}
+                  </a>
                 </div>
               </div>
             </div>
@@ -71,13 +74,13 @@ const Footer = () => {
 
                 <ul class="widget-list">
                   <li>
-                    <a href="about.html">About Molla</a>
+                    <a href="about.html">About I Gadget</a>
                   </li>
                   <li>
                     <a href="#">Our Services</a>
                   </li>
                   <li>
-                    <a href="#">How to shop on Molla</a>
+                    <a href="#">How to shop on I Gadget</a>
                   </li>
                   <li>
                     <a href="faq.html">FAQ</a>
@@ -149,7 +152,20 @@ const Footer = () => {
             Copyright © 2024 I2 Square gadgets. All Rights Reserved.
           </p>
           <figure class="footer-payments">
-            <img src={payment} alt="Payment methods" width="272" height="20" />
+            <p>
+              Design & Develop by{" "}
+              <Link
+                to="https://www.ftssolution.tech/"
+                target="_blank"
+                style={{
+                  fontSize: "15px",
+                  fontWeight: "bold",
+                  color: "#007bff",
+                }}
+              >
+                FTS Solution
+              </Link>
+            </p>
           </figure>
         </div>
       </div>
