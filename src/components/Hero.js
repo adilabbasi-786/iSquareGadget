@@ -1,48 +1,89 @@
-import React, { useContext } from "react";
-import slider1 from "../assests/demo-4/slider/slide-1.png";
-import slider2 from "../assests/demo-4/slider/slide-2.png";
+import React, { useContext, useEffect, useState } from "react";
+import Slider from "react-slick";
+import axios from "axios";
 import { ShopContext } from "../ShopContext";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const Hero = () => {
-  const { banner } = useContext(ShopContext);
+  const [bannerData, setBannerData] = useState(null);
+
+  useEffect(() => {
+    const fetchBannerData = async () => {
+      try {
+        const response = await axios.get(
+          "https://strapi-182529-0.cloudclusters.net/api/shop-detail?populate[banner][populate]=*"
+        );
+        setBannerData(response.data);
+      } catch (error) {
+        console.error("Error fetching banner data:", error);
+      }
+    };
+
+    fetchBannerData();
+  }, []);
+
+  if (!bannerData) {
+    return <div>Loading...</div>;
+  }
+
+  const banners = bannerData?.data?.attributes?.banner;
+
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 1000,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    arrows: true,
+  };
+
   return (
-    <div class="page-wrapper">
-      <main class="main">
+    <div className="page-wrapper">
+      <main className="main">
         <div className="intro-slider-container mb-5">
-          <div
-            className="intro-slide"
-            // style={{
-            //   backgroundImage: `url(${slider2})`,
-            // }}
-          >
-            <img
-              src={`https://strapi-182529-0.cloudclusters.net${banner?.data?.attributes?.url}`}
-              alt=""
-            />
-            <div className="container intro-content">
-              <div className="row justify-content-end">
-                <div className="col-auto col-sm-7 col-md-6 col-lg-5">
-                  <h3 className="intro-subtitle text-primary">New Arrival</h3>
-                  <h1 className="intro-title">
-                    Apple iPad Pro <br />
-                    12.9 Inch, 64GB{" "}
-                  </h1>
-
-                  <div className="intro-price">
-                    <sup>Today:</sup>
-                    <span className="text-primary">
-                      $999<sup>.99</sup>
-                    </span>
+          <Slider {...settings}>
+            {banners.map((banner, index) => {
+              const backgroundImageUrl = `https://strapi-182529-0.cloudclusters.net${banner.image.data[0].attributes.url}`;
+              return (
+                <div key={index}>
+                  <div
+                    className="intro-slide"
+                    style={{
+                      backgroundImage: `url(${backgroundImageUrl})`,
+                      backgroundSize: "cover",
+                      backgroundPosition: "center",
+                      // height: "500px",
+                      position: "relative",
+                    }}
+                  >
+                    <div
+                      className="container intro-content"
+                      style={{
+                        position: "absolute",
+                        top: "30%",
+                        left: "10%",
+                      }}
+                    >
+                      <div
+                        className="row justify-content-end"
+                        style={{ marginLeft: "300px" }}
+                      >
+                        <div className="col-auto col-sm-7 col-md-6 col-lg-5">
+                          <h3 className="intro-subtitle text-primary">
+                            New Arrival
+                          </h3>
+                          <h1 className="intro-title">{banner.text}</h1>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-
-                  <a href="category.html" className="btn btn-primary btn-round">
-                    <span>Shop More</span>
-                    <i className="icon-long-arrow-right"></i>
-                  </a>
                 </div>
-              </div>
-            </div>
-          </div>
+              );
+            })}
+          </Slider>
         </div>
       </main>
     </div>

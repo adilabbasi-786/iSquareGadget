@@ -91,7 +91,7 @@ const Header = () => {
               </div>
             </div>
 
-            <div className="header-right">
+            {/* <div className="header-right">
               <div className="dropdown compare-dropdown">
                 <a
                   href="#"
@@ -237,7 +237,7 @@ const Header = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </header>
