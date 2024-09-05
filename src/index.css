@@ -26196,7 +26196,7 @@ a:focus {
   border-bottom-color: #39f;
 }
 .nav.nav-border-anim .nav-link:before {
-  background-color: #39f;
+  /* background-color: #39f; */
 }
 .title-link:hover,
 .title-link:focus {

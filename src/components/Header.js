@@ -6,7 +6,7 @@ import { ShopContext } from "../ShopContext";
 import Search from "./Search";
 
 const Header = () => {
-  const { PhoneNumber, Logo } = useContext(ShopContext);
+  const { PhoneNumber, Logo, EMail } = useContext(ShopContext);
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [allProducts, setAllProducts] = useState([]);
@@ -42,7 +42,7 @@ const Header = () => {
   return (
     <div className="page-wrapper">
       <header className="header header-intro-clearance header-4">
-        {/* <div className="header-top " style={{ marginTop: "5px" }}>
+        <div className="header-top " style={{ marginTop: "5px" }}>
           <div className="container">
             <div className="header-left">
               <a href="tel:#">
@@ -58,7 +58,7 @@ const Header = () => {
                   <ul>
                     <li>
                       <a href="#signin-modal" data-toggle="modal">
-                        Sign in / Sign up
+                        {EMail && EMail[0].Email}
                       </a>
                     </li>
                   </ul>
@@ -66,7 +66,7 @@ const Header = () => {
               </ul>
             </div>
           </div>
-        </div> */}
+        </div>
 
         <div className="header-middle bg-dark">
           <div className="container">
