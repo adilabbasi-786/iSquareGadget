@@ -101,7 +101,12 @@ const Header = () => {
         </div>
 
         <div className="header-middle bg-dark">
-          <div className="container">
+          <div
+            className="container"
+            style={{
+              maxHeight: "90px",
+            }}
+          >
             <div className="header-left">
               <a href="/" className="logo">
                 {!logoLoaded && <Loader />}{" "}
@@ -112,6 +117,7 @@ const Header = () => {
                   style={{
                     width: "150px",
                     height: "84px",
+                    marginBottom: "10%",
                     display: logoLoaded ? "block" : "none", // Hide image until it's loaded
                   }}
                   onLoad={() => setLogoLoaded(true)} // Set logoLoaded to true when image is loaded
