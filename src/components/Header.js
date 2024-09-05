@@ -109,7 +109,13 @@ const Header = () => {
           >
             <div className="header-left">
               <a href="/" className="logo">
-                {!logoLoaded && <Loader />}{" "}
+                {!logoLoaded && (
+                  <div style={{ width: "50px", height: "50px" }}>
+                    {" "}
+                    {/* Adjust the loader size here */}
+                    <Loader />
+                  </div>
+                )}
                 {/* Show loader while the logo is loading */}
                 <img
                   src={`https://strapi-182529-0.cloudclusters.net${Logo?.data?.attributes?.url}`}
