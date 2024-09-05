@@ -34,7 +34,11 @@ const Footer = () => {
                     required
                   />
                   <div class="input-group-append">
-                    <button class="btn btn-primary" type="submit">
+                    <button
+                      class="btn btn-primary"
+                      type="submit"
+                      style={{ backgroundColor: "#E33334", border: "#E33334" }}
+                    >
                       <span>Subscribe</span>
                       <i class="icon-long-arrow-right"></i>
                     </button>
@@ -67,7 +71,7 @@ const Footer = () => {
                 </p>
 
                 <div className="widget-call">
-                  <i className="icon-phone"></i>
+                  <i className="icon-phone" style={{ color: "white" }}></i>
                   Got Question? Call us 24/7
                   <a href="tel:#" style={{ color: "#e33434" }}>
                     {PhoneNumber && PhoneNumber[0]?.PhoneNumber}
@@ -78,25 +82,36 @@ const Footer = () => {
 
             <div className="col-sm-6 col-lg-3">
               <div className="widget">
-                <h4 className="widget-title" style={{ color: "white" }}>
+                <h4
+                  className="widget-title"
+                  style={{
+                    color: "white",
+                    marginLeft: "5%",
+                  }}
+                >
                   Useful Links
                 </h4>
 
                 <ul>
                   <li style={{ marginBottom: "10px" }}>
-                    <a href="about.html">About I Gadget</a>
+                    <a href="#" style={{ textDecoration: "none" }}>
+                      Our Services
+                    </a>
                   </li>
                   <li style={{ marginBottom: "10px" }}>
-                    <a href="#">Our Services</a>
+                    <a href="#" style={{ textDecoration: "none" }}>
+                      How to shop on I Gadget
+                    </a>
                   </li>
                   <li style={{ marginBottom: "10px" }}>
-                    <a href="#">How to shop on I Gadget</a>
+                    <a href="faq.html" style={{ textDecoration: "none" }}>
+                      FAQ
+                    </a>
                   </li>
                   <li style={{ marginBottom: "10px" }}>
-                    <a href="faq.html">FAQ</a>
-                  </li>
-                  <li style={{ marginBottom: "10px" }}>
-                    <a href="contact.html">Contact us</a>
+                    <a href="contact.html" style={{ textDecoration: "none" }}>
+                      Contact us
+                    </a>
                   </li>
                 </ul>
               </div>
@@ -104,25 +119,24 @@ const Footer = () => {
 
             <div className="col-sm-6 col-lg-3">
               <div className="widget">
-                <h4 className="widget-title" style={{ color: "white" }}>
+                <h4
+                  className="widget-title"
+                  style={{ color: "white", marginLeft: "5%" }}
+                >
                   Customer Service
                 </h4>
 
                 <ul>
                   <li style={{ marginBottom: "10px" }}>
-                    <a href="#">Payment Methods</a>
+                    <a href="#" style={{ textDecoration: "none" }}>
+                      Payment Methods
+                    </a>
                   </li>
+
                   <li style={{ marginBottom: "10px" }}>
-                    <a href="#">Money-back guarantee!</a>
-                  </li>
-                  <li style={{ marginBottom: "10px" }}>
-                    <a href="#">Returns</a>
-                  </li>
-                  <li style={{ marginBottom: "10px" }}>
-                    <a href="#">Shipping</a>
-                  </li>
-                  <li style={{ marginBottom: "10px" }}>
-                    <a href="#">Terms and conditions</a>
+                    <a href="#" style={{ textDecoration: "none" }}>
+                      Terms and conditions
+                    </a>
                   </li>
                 </ul>
               </div>
@@ -130,25 +144,38 @@ const Footer = () => {
 
             <div className="col-sm-6 col-lg-3">
               <div className="widget">
-                <h4 className="widget-title" style={{ color: "white" }}>
+                <h4
+                  className="widget-title"
+                  style={{ color: "white", marginLeft: "5%" }}
+                >
                   My Account
                 </h4>
 
                 <ul>
                   <li style={{ marginBottom: "10px" }}>
-                    <a href="#">Sign In</a>
+                    <a href="#" style={{ textDecoration: "none" }}>
+                      Sign In
+                    </a>
                   </li>
                   <li style={{ marginBottom: "10px" }}>
-                    <a href="cart.html">View Cart</a>
+                    <a href="cart.html" style={{ textDecoration: "none" }}>
+                      View Cart
+                    </a>
                   </li>
                   <li style={{ marginBottom: "10px" }}>
-                    <a href="#">My Wishlist</a>
+                    <a href="#" style={{ textDecoration: "none" }}>
+                      My Wishlist
+                    </a>
                   </li>
                   <li style={{ marginBottom: "10px" }}>
-                    <a href="#">Track My Order</a>
+                    <a href="#" style={{ textDecoration: "none" }}>
+                      Track My Order
+                    </a>
                   </li>
                   <li style={{ marginBottom: "10px" }}>
-                    <a href="#">Help</a>
+                    <a href="#" style={{ textDecoration: "none" }}>
+                      Help
+                    </a>
                   </li>
                 </ul>
               </div>

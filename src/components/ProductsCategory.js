@@ -42,6 +42,7 @@ const ProductsCategory = ({ onCategorySelect }) => {
             onClick={() => handleCategorySelect("All")}
             style={{
               textDecoration: "none",
+              backgroundColor: "white",
               color: selectedCategory === "All" ? "#c91a06" : "",
               cursor: "pointer",
               ":hover": {
