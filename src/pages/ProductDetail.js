@@ -48,7 +48,7 @@ const ProductDetail = () => {
   return (
     <>
       <Header />
-      <Navbar />
+      {/* <Navbar /> */}
       <main className={`main ${isModalOpen ? "blur-background" : ""}`}>
         <nav aria-label="breadcrumb" className="breadcrumb-nav border-0 mb-0">
           <div className="container d-flex align-items-center">

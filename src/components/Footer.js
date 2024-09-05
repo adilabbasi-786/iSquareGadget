@@ -159,11 +159,11 @@ const Footer = () => {
 
       <div className="footer-bottom">
         <div className="container">
-          <p className="footer-copyright">
+          <p className="footer-copyright" style={{ color: "white" }}>
             Copyright © 2024 I2 Square gadgets. All Rights Reserved.
           </p>
           <figure className="footer-payments">
-            <p>
+            <p style={{ color: "white" }}>
               Design & Develop by{" "}
               <Link
                 to="https://www.ftssolution.tech/"

@@ -64,7 +64,7 @@ const Header = () => {
                   e.target.style.color = "#333";
                 }}
               >
-                <FontAwesomeIcon icon={faPhone} />{" "}
+                <FontAwesomeIcon icon={faPhone} /> Call:{" "}
                 {PhoneNumber && PhoneNumber[0]?.PhoneNumber}
               </a>
             </div>
