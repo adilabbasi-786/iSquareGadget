@@ -1,0 +1,23 @@
+/* Mobile view styles for banner text */
+@media only screen and (max-width: 768px) {
+  .banner-text {
+    font-size: 1rem; /* Adjust font size */
+    padding: 10px; /* Add some padding */
+    text-align: center;
+    /* Center the text */
+    line-height: 1.6; /* Improve readability */
+    max-width: 90%; /* Ensure the text takes full width */
+    /* margin: 0 auto; */
+
+    /* Center on smaller screens */
+  }
+
+  .banner-text h1 {
+    font-size: 1.5rem;
+    /* Adjust heading size */
+  }
+
+  .banner-text p {
+    font-size: 1rem; /* Adjust paragraph size */
+  }
+}
