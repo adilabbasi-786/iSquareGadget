@@ -125,7 +125,10 @@ const ProductDetail = () => {
                           </a>
                         </div>
 
-                        <div className="product-price">
+                        <div
+                          className="product-price"
+                          style={{ color: "#e34e3d" }}
+                        >
                           {data[0]?.attributes?.Price} RS
                         </div>
 
@@ -159,7 +162,7 @@ const ProductDetail = () => {
                             {data[0]?.attributes?.category.data.attributes.Name}
                           </div>
 
-                          <div className="social-icons social-icons-sm">
+                          {/* <div className="social-icons social-icons-sm">
                             <span className="social-label">Share:</span>
                             <a
                               href="#"
@@ -193,7 +196,7 @@ const ProductDetail = () => {
                             >
                               <i className="icon-pinterest"></i>
                             </a>
-                          </div>
+                          </div> */}
                         </div>
                       </div>
                     </div>

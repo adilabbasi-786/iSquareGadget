@@ -34,7 +34,11 @@ const Footer = () => {
                     required
                   />
                   <div className="input-group-append">
-                    <button className="btn btn-primary" type="submit">
+                    <button
+                      className="btn btn-primary"
+                      // style={{ backgroundColor: "#a60a0a" }}
+                      type="submit"
+                    >
                       <span>Subscribe</span>
                       <i className="icon-long-arrow-right"></i>
                     </button>
@@ -69,7 +73,7 @@ const Footer = () => {
                 <div className="widget-call">
                   <i className="icon-phone"></i>
                   Got Question? Call us 24/7
-                  <a href="tel:#">
+                  <a href="tel:#" style={{ color: "#e33434" }}>
                     {PhoneNumber && PhoneNumber[0]?.PhoneNumber}
                   </a>
                 </div>
@@ -82,20 +86,20 @@ const Footer = () => {
                   Useful Links
                 </h4>
 
-                <ul className="widget-list">
-                  <li>
+                <ul>
+                  <li style={{ marginBottom: "10px" }}>
                     <a href="about.html">About I Gadget</a>
                   </li>
-                  <li>
+                  <li style={{ marginBottom: "10px" }}>
                     <a href="#">Our Services</a>
                   </li>
-                  <li>
+                  <li style={{ marginBottom: "10px" }}>
                     <a href="#">How to shop on I Gadget</a>
                   </li>
-                  <li>
+                  <li style={{ marginBottom: "10px" }}>
                     <a href="faq.html">FAQ</a>
                   </li>
-                  <li>
+                  <li style={{ marginBottom: "10px" }}>
                     <a href="contact.html">Contact us</a>
                   </li>
                 </ul>
@@ -108,24 +112,21 @@ const Footer = () => {
                   Customer Service
                 </h4>
 
-                <ul className="widget-list">
-                  <li>
+                <ul>
+                  <li style={{ marginBottom: "10px" }}>
                     <a href="#">Payment Methods</a>
                   </li>
-                  <li>
+                  <li style={{ marginBottom: "10px" }}>
                     <a href="#">Money-back guarantee!</a>
                   </li>
-                  <li>
+                  <li style={{ marginBottom: "10px" }}>
                     <a href="#">Returns</a>
                   </li>
-                  <li>
+                  <li style={{ marginBottom: "10px" }}>
                     <a href="#">Shipping</a>
                   </li>
-                  <li>
+                  <li style={{ marginBottom: "10px" }}>
                     <a href="#">Terms and conditions</a>
-                  </li>
-                  <li>
-                    <a href="#">Privacy Policy</a>
                   </li>
                 </ul>
               </div>
@@ -137,20 +138,20 @@ const Footer = () => {
                   My Account
                 </h4>
 
-                <ul className="widget-list">
-                  <li>
+                <ul>
+                  <li style={{ marginBottom: "10px" }}>
                     <a href="#">Sign In</a>
                   </li>
-                  <li>
+                  <li style={{ marginBottom: "10px" }}>
                     <a href="cart.html">View Cart</a>
                   </li>
-                  <li>
+                  <li style={{ marginBottom: "10px" }}>
                     <a href="#">My Wishlist</a>
                   </li>
-                  <li>
+                  <li style={{ marginBottom: "10px" }}>
                     <a href="#">Track My Order</a>
                   </li>
-                  <li>
+                  <li style={{ marginBottom: "10px" }}>
                     <a href="#">Help</a>
                   </li>
                 </ul>
@@ -174,10 +175,16 @@ const Footer = () => {
                 style={{
                   fontSize: "15px",
                   fontWeight: "bold",
-                  color: "#007bff",
+                  color: "#e33434",
+                }}
+                onMouseOver={(e) => {
+                  e.target.style.color = "#e34e3d";
+                }}
+                onMouseOut={(e) => {
+                  e.target.style.color = "#e33434";
                 }}
               >
-                FTS Solution
+                FTS Solution Tech
               </Link>
             </p>
           </figure>

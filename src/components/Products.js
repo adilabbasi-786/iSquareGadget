@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import ProductsCategory from "./ProductsCategory";
+import Loader from "./Loader";
 
 const Products = () => {
   const navigate = useNavigate();
   const [allProducts, setAllProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("All");
+  const [loading, setLoading] = useState(true); // Loader state
 
   useEffect(() => {
     const fetchProducts = async () => {
+      setLoading(true); // Show loader while fetching
       try {
         const response = await fetch(
           "https://strapi-182529-0.cloudclusters.net/api/Products?populate=*"
@@ -17,8 +20,10 @@ const Products = () => {
         const data = await response.json();
         setAllProducts(data.data);
         setFilteredProducts(data.data);
+        setLoading(false); // Hide loader after fetching
       } catch (error) {
         console.error("Error fetching products:", error);
+        setLoading(false); // Hide loader in case of error
       }
     };
     fetchProducts();
@@ -35,6 +40,11 @@ const Products = () => {
       setFilteredProducts(filtered);
     }
   }, [selectedCategory, allProducts]);
+
+  // Show loader while loading
+  if (loading) {
+    return <Loader />;
+  }
 
   return (
     <div className="container new-arrivals">

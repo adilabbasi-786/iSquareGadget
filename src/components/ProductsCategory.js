@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 
 const ProductsCategory = ({ onCategorySelect }) => {
   const [categories, setCategories] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState("All");
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -12,11 +13,16 @@ const ProductsCategory = ({ onCategorySelect }) => {
         const data = await response.json();
         setCategories(data.data);
       } catch (error) {
-        console.error("error fetching error", error);
+        console.error("error fetching categories", error);
       }
     };
     fetchCategories();
   }, []);
+
+  const handleCategorySelect = (categoryName) => {
+    setSelectedCategory(categoryName);
+    onCategorySelect(categoryName);
+  };
 
   return (
     <div className="heading-right">
@@ -26,14 +32,22 @@ const ProductsCategory = ({ onCategorySelect }) => {
       >
         <li className="nav-item">
           <a
-            className="nav-link "
+            className={`nav-link ${selectedCategory === "All" ? "active" : ""}`}
             id="new-all-link"
             data-toggle="tab"
             href="#new-all-tab"
             role="tab"
             aria-controls="new-all-tab"
-            aria-selected="true"
-            onClick={() => onCategorySelect("All")}
+            aria-selected={selectedCategory === "All"}
+            onClick={() => handleCategorySelect("All")}
+            style={{
+              textDecoration: "none",
+              color: selectedCategory === "All" ? "#c91a06" : "",
+              cursor: "pointer",
+              ":hover": {
+                color: "#c91a06",
+              },
+            }}
           >
             All
           </a>
@@ -41,14 +55,27 @@ const ProductsCategory = ({ onCategorySelect }) => {
         {categories.map((category) => (
           <li className="nav-item" key={category.id}>
             <a
-              className="nav-link"
+              className={`nav-link ${
+                selectedCategory === category.attributes.Name ? "active" : ""
+              }`}
               id={`new-${category.attributes.Name}-link`}
               data-toggle="tab"
               href={`#new-${category.attributes.Name}-tab`}
               role="tab"
               aria-controls={`new-${category.attributes.Name}-tab`}
-              aria-selected="false"
-              onClick={() => onCategorySelect(category.attributes.Name)}
+              aria-selected={selectedCategory === category.attributes.Name}
+              onClick={() => handleCategorySelect(category.attributes.Name)}
+              style={{
+                textDecoration: "none",
+                color:
+                  selectedCategory === category.attributes.Name
+                    ? "#c91a06"
+                    : "",
+                cursor: "pointer",
+                ":hover": {
+                  color: "#c91a06",
+                },
+              }}
             >
               {category.attributes.Name}
             </a>
