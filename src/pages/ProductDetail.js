@@ -5,15 +5,20 @@ import Footer from "../components/Footer";
 import { useParams } from "react-router-dom";
 import Zoom from "react-medium-image-zoom";
 import "react-medium-image-zoom/dist/styles.css";
+import Loader from "../components/Loader";
 
 const ProductDetail = () => {
   const { id } = useParams();
   const [data, setData] = useState([]);
   const [selectedImage, setSelectedImage] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
-
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scroll to the top when the component loads
+  }, [id]);
   useEffect(() => {
     const getData = async () => {
+      setLoading(true);
       let req = await fetch(
         `https://strapi-182529-0.cloudclusters.net/api/Products?populate=*&[filters][id]=${id}`
       );
@@ -24,6 +29,7 @@ const ProductDetail = () => {
           `https://strapi-182529-0.cloudclusters.net${images[0].attributes.url}`
         );
       }
+      setLoading(false);
       setData(res.data);
     };
     getData();
@@ -36,7 +42,9 @@ const ProductDetail = () => {
   const toggleModal = () => {
     setIsModalOpen(!isModalOpen);
   };
-
+  if (loading) {
+    return <Loader />;
+  }
   return (
     <>
       <Header />
