@@ -8939,7 +8939,7 @@ small.form-text {
   }
   .cta .input-group-round .form-control,
   .cta .input-group-round .btn {
-    border-radius: 30px;
+    border-radius: 0px;
   }
   .cta .input-group-round .input-group-append {
     justify-content: center;

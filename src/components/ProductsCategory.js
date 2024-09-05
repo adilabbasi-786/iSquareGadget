@@ -48,12 +48,35 @@ const ProductsCategory = ({ onCategorySelect }) => {
                 color: "#c91a06",
               },
             }}
+            onMouseOver={(e) => {
+              e.target.style.color = "#c91a06";
+            }}
+            onMouseOut={(e) => {
+              e.target.style.color = "#333";
+            }}
           >
             All
           </a>
         </li>
         {categories.map((category) => (
-          <li className="nav-item" key={category.id}>
+          <li
+            className="nav-item"
+            key={category.id}
+            style={{
+              cursor: "pointer",
+              textDecoration: "none",
+              color: "#333",
+              ":hover": {
+                color: "#c91a06",
+              },
+            }}
+            onMouseOver={(e) => {
+              e.target.style.color = "#c91a06";
+            }}
+            onMouseOut={(e) => {
+              e.target.style.color = "#333";
+            }}
+          >
             <a
               className={`nav-link ${
                 selectedCategory === category.attributes.Name ? "active" : ""

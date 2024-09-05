@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { faPhone, faBars, faSearch } from "@fortawesome/free-solid-svg-icons";
 import { ShopContext } from "../ShopContext";
 import Search from "./Search";
+import Loader from "./Loader"; // Import your Loader component
 
 const Header = () => {
   const { PhoneNumber, Logo, EMail } = useContext(ShopContext);
@@ -11,6 +12,7 @@ const Header = () => {
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [allProducts, setAllProducts] = useState([]);
   const [showSearch, setShowSearch] = useState(false); // State to control Search component visibility
+  const [logoLoaded, setLogoLoaded] = useState(false); // Track logo load status
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -45,7 +47,23 @@ const Header = () => {
         <div className="header-top " style={{ marginTop: "5px" }}>
           <div className="container">
             <div className="header-left">
-              <a href="tel:#">
+              <a
+                href="tel:#"
+                style={{
+                  cursor: "pointer",
+                  textDecoration: "none",
+                  color: "#333",
+                  ":hover": {
+                    color: "#c91a06",
+                  },
+                }}
+                onMouseOver={(e) => {
+                  e.target.style.color = "#c91a06";
+                }}
+                onMouseOut={(e) => {
+                  e.target.style.color = "#333";
+                }}
+              >
                 <FontAwesomeIcon icon={faPhone} />{" "}
                 {PhoneNumber && PhoneNumber[0]?.PhoneNumber}
               </a>
@@ -53,16 +71,30 @@ const Header = () => {
 
             <div className="header-right">
               <ul className="top-menu">
-                <li>
-                  <a href="#">Links</a>
-                  <ul>
-                    <li>
-                      <a href="#signin-modal" data-toggle="modal">
-                        {EMail && EMail[0].Email}
-                      </a>
-                    </li>
-                  </ul>
-                </li>
+                <ul>
+                  <li>
+                    <a
+                      href="#signin-modal"
+                      data-toggle="modal"
+                      style={{
+                        cursor: "pointer",
+                        textDecoration: "none",
+                        color: "#333",
+                        ":hover": {
+                          color: "#c91a06",
+                        },
+                      }}
+                      onMouseOver={(e) => {
+                        e.target.style.color = "#c91a06";
+                      }}
+                      onMouseOut={(e) => {
+                        e.target.style.color = "#333";
+                      }}
+                    >
+                      {EMail && EMail[0].Email}
+                    </a>
+                  </li>
+                </ul>
               </ul>
             </div>
           </div>
@@ -71,19 +103,18 @@ const Header = () => {
         <div className="header-middle bg-dark">
           <div className="container">
             <div className="header-left">
-              {/* <button className="mobile-menu-toggler">
-                <span className="sr-only">Toggle mobile menu</span>
-                <FontAwesomeIcon icon={faBars} />
-              </button> */}
-
               <a href="/" className="logo">
+                {!logoLoaded && <Loader />}{" "}
+                {/* Show loader while the logo is loading */}
                 <img
                   src={`https://strapi-182529-0.cloudclusters.net${Logo?.data?.attributes?.url}`}
                   alt="Molla Logo"
                   style={{
                     width: "150px",
                     height: "84px",
+                    display: logoLoaded ? "block" : "none", // Hide image until it's loaded
                   }}
+                  onLoad={() => setLogoLoaded(true)} // Set logoLoaded to true when image is loaded
                 />
               </a>
             </div>

@@ -25,22 +25,18 @@ const Footer = () => {
               </div>
 
               <form action="#">
-                <div className="input-group input-group-round">
+                <div class="input-group input-group-round">
                   <input
                     type="email"
-                    className="form-control form-control-white"
+                    class="form-control form-control-white"
                     placeholder="Enter your Email Address"
                     aria-label="Email Adress"
                     required
                   />
-                  <div className="input-group-append">
-                    <button
-                      className="btn btn-primary"
-                      // style={{ backgroundColor: "#a60a0a" }}
-                      type="submit"
-                    >
+                  <div class="input-group-append">
+                    <button class="btn btn-primary" type="submit">
                       <span>Subscribe</span>
-                      <i className="icon-long-arrow-right"></i>
+                      <i class="icon-long-arrow-right"></i>
                     </button>
                   </div>
                 </div>
