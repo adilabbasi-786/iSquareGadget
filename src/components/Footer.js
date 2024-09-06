@@ -58,8 +58,8 @@ const Footer = () => {
                   src={`https://strapi-182529-0.cloudclusters.net${Logo?.data?.attributes?.url}`}
                   className="footer-logo"
                   style={{
-                    width: "150px",
-                    height: "84px",
+                    width: "210px",
+                    height: "110px",
                   }}
                   alt="Footer Logo"
                   width="105"

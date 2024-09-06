@@ -121,9 +121,9 @@ const Header = () => {
                   src={`https://strapi-182529-0.cloudclusters.net${Logo?.data?.attributes?.url}`}
                   alt="Molla Logo"
                   style={{
-                    width: "150px",
-                    height: "84px",
-                    marginBottom: "10%",
+                    width: "210px",
+                    height: "110px",
+                    // marginBottom: "10%",
                     display: logoLoaded ? "block" : "none", // Hide image until it's loaded
                   }}
                   onLoad={() => setLogoLoaded(true)} // Set logoLoaded to true when image is loaded
